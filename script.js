@@ -127,3 +127,30 @@ window.addEventListener('click', (event) => {
     }, 300);
   }
 });
+
+
+(function() {
+  emailjs.init("YOUR_USER_ID");
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  const params = {
+    name: name,
+    email: email,
+    message: message
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
+    .then(function(response) {
+      document.getElementById('status-message').innerHTML = `<div class="alert alert-success">Your message was sent successfully!</div>`;
+      document.getElementById('contact-form').reset();  // Clear the form
+    }, function(error) {
+      document.getElementById('status-message').innerHTML = `<div class="alert alert-danger">There was an error sending your message. Please try again later.</div>`;
+    });
+});
