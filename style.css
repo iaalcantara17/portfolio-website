@@ -412,3 +412,35 @@ footer {
   padding: 20px;
   color: #B57EDC;
 }
+
+.language-grid {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.language-subcategory {
+  width: 45%;
+}
+
+.language-subcategory h4 {
+  color: #CC8899;
+  margin-bottom: 10px;
+}
+
+.language-subcategory ul {
+  list-style: none;
+  padding: 0;
+}
+
+.language-subcategory ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.language-subcategory ul li img.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
