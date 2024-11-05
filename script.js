@@ -128,6 +128,33 @@ window.addEventListener('click', (event) => {
   }
 });
 
+const rhythmiqModal = document.getElementById('rhythmiq-modal');
+const rhythmiqClose = document.getElementById('rhythmiq-close');
+const rhythmiqIcon = document.getElementById('rhythmiq-icon');
+
+rhythmiqIcon.addEventListener('click', () => {
+  rhythmiqModal.classList.add('show');
+  rhythmiqModal.classList.remove('hide');
+  rhythmiqModal.style.display = 'block';
+});
+
+rhythmiqClose.addEventListener('click', () => {
+  rhythmiqModal.classList.add('hide');
+  rhythmiqModal.classList.remove('show');
+  setTimeout(() => {
+    rhythmiqModal.style.display = 'none';
+  }, 300);
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target === rhythmiqModal) {
+    rhythmiqModal.classList.add('hide');
+    rhythmiqModal.classList.remove('show');
+    setTimeout(() => {
+      rhythmiqModal.style.display = 'none';
+    }, 300);
+  }
+});
 
 (function() {
   emailjs.init("YOUR_USER_ID");
