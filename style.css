@@ -1,4 +1,5 @@
-body {
+body 
+{
   font-family: 'Source Code Pro', monospace;
   background-color: #000;
   color: #f0f8ff;
@@ -9,7 +10,8 @@ body {
   scroll-behavior: smooth;
 }
 
-#matrix {
+#matrix 
+{
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +21,8 @@ body {
   height: 100%;
 }
 
-.navbar {
+.navbar 
+{
   position: fixed;
   top: 0;
   width: 100%;
@@ -29,7 +32,8 @@ body {
   border-bottom: none;
 }
 
-.navbar ul {
+.navbar ul 
+{
   list-style: none;
   display: flex;
   justify-content: space-evenly;
@@ -38,15 +42,18 @@ body {
   padding: 0;
 }
 
-body {
+body 
+{
   margin-top: 80px;
 }
 
-.navbar ul li {
+.navbar ul li 
+{
   margin: 0;
 }
 
-.navbar ul li a {
+.navbar ul li a 
+{
   color: #f0f8ff;
   text-decoration: none;
   font-size: 18px;
@@ -55,11 +62,13 @@ body {
   transition: color 0.3s ease;
 }
 
-.navbar ul li a:hover {
+.navbar ul li a:hover 
+{
   color: #B57EDC;
 }
 
-.intro-container {
+.intro-container 
+{
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -71,14 +80,16 @@ body {
   overflow-x: hidden;
 }
 
-.text-box {
+.text-box 
+{
   display: flex;
   align-items: center;
   justify-content: center;
   width: 45%;
 }
 
-#intro-text {
+#intro-text 
+{
   opacity: 0;
   font-size: 3vw;
   line-height: 1.5;
@@ -89,29 +100,34 @@ body {
   min-height: 3em;
 }
 
-#aws-splash-text {
+#aws-splash-text 
+{
   font-size: 3rem;
   text-align: center;
   display: inline-block;
   vertical-align: middle;
   line-height: 4rem;
-  white-space: nowrap;  /* Prevents the text from wrapping to a new line */
-  min-width: 40vw;      /* Optional: adjust if needed */
-  min-height: 3em;       /* Adjust as needed */
+  white-space: normal;
+  min-width: 40vw;
+  min-height: 3em;
 }
 
-.aws-logo-splash {
-  width: 10rem;        /* Adjust as desired for a bigger image */
-  margin-bottom: 20px;  /* Space between the image and the typed text */
+.aws-logo-splash 
+{
+  width: 10rem;
+  margin-bottom: 20px;
 }
 
-@keyframes fadeIn {
-  to {
+@keyframes fadeIn 
+{
+  to 
+  {
     opacity: 1;
   }
 }
 
-.my-photo {
+.my-photo 
+{
   width: 20vw;
   height: auto;
   border-radius: 20px;
@@ -120,14 +136,16 @@ body {
   margin: 0 auto;
 }
 
-#about-me-section {
+#about-me-section 
+{
   padding: 100px 0;
   background-color: transparent;
   color: #f0f8ff;
   text-align: center;
 }
 
-.about-me-container {
+.about-me-container 
+{
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   max-width: 1200px;
@@ -140,7 +158,8 @@ body {
   padding: 20px;
 }
 
-.about-photo {
+.about-photo 
+{
   width: 25vw;
   height: auto;
   border-radius: 20px;
@@ -148,30 +167,35 @@ body {
   box-shadow: 0 0 30px 10px rgba(75, 0, 130, 0.7);
 }
 
-.about-me-text {
+.about-me-text 
+{
   width: 50%;
   text-align: left;
   font-size: 1.2em;
   line-height: 1.8;
 }
 
-.about-me-text p {
+.about-me-text p 
+{
   margin-bottom: 20px;
 }
 
-#skills-section {
+#skills-section
+{
   padding: 50px 0;
   background-color: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
-.skills-grid {
+.skills-grid 
+{
   display: flex;
   justify-content: center;
   gap: 30px;
 }
 
-.skills-column {
+.skills-column 
+{
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 20px;
@@ -179,35 +203,41 @@ body {
   width: 20%;
 }
 
-.skills-column h3 {
+.skills-column h3 
+{
   color: #B57EDC;
   margin-bottom: 20px;
 }
 
-.skills-column ul {
+.skills-column ul 
+{
   list-style: none;
   padding: 0;
 }
 
-.skills-column ul li {
+.skills-column ul li 
+{
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.skills-column ul li img.icon {
+.skills-column ul li img.icon 
+{
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-#projects-section {
+#projects-section 
+{
   padding: 100px 0;
   background-color: transparent;
   text-align: center;
 }
 
-#projects-section ul {
+#projects-section ul 
+{
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -215,7 +245,8 @@ body {
   padding: 0;
 }
 
-.project-icon {
+.project-icon 
+{
   width: 300px;
   height: 150px;
   object-fit: cover;
@@ -224,24 +255,28 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-icon:hover {
+.project-icon:hover 
+{
   transform: scale(1.1);
   box-shadow: 0 0 30px 15px rgba(75, 0, 130, 0.9);
 }
 
-#contact-section {
+#contact-section 
+{
   text-align: center;
   padding: 50px 0;
   background-color: transparent;
 }
 
-.contact-links {
+.contact-links 
+{
   display: flex;
   justify-content: center;
   gap: 40px;
 }
 
-.contact-item {
+.contact-item 
+{
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -251,93 +286,50 @@ body {
   transition: color 0.3s ease;
 }
 
-.contact-item:hover {
+.contact-item:hover 
+{
   color: #B57EDC;
 }
 
-.icon {
+.icon 
+{
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-@media (max-width: 768px) {
-  .contact-links {
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    
-  }
-
-  #intro-text {
-    font-size: 8vw;
-    line-height: 1.2;
-  }
-
-  .intro-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 5%;
-  }
-
-  .my-photo {
-    width: 50vw;
-    margin-top: 20px;
-    height: auto;
-    border-radius: 20px;
-    object-fit: cover;
-  }
-  
-  #projects-section ul {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .skills-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .skills-column {
-    width: 80%;
-  }
-
-  .about-me-container {
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px;
-  }
-
-  .about-me-text {
-    width: 80%;
-    text-align: center;
-  }
-}
-
-@keyframes modalFadeIn {
-  from {
+@keyframes modalFadeIn 
+{
+  from 
+  {
     opacity: 0;
     transform: scale(0.7);
   }
-  to {
+
+  to 
+  {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-@keyframes modalFadeOut {
-  from {
+@keyframes modalFadeOut 
+{
+  from 
+  {
     opacity: 1;
     transform: scale(1);
   }
-  to {
+
+  to 
+  {
     opacity: 0;
     transform: scale(0.7);
   }
 }
 
-.modal-content {
+.modal-content 
+{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -356,16 +348,19 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.modal.show {
+.modal.show 
+{
   display: block;
   animation: modalFadeIn 0.3s forwards;
 }
 
-.modal.hide {
+.modal.hide 
+{
   animation: modalFadeOut 0.3s forwards;
 }
 
-.modal {
+.modal 
+{
   display: none;
   position: fixed;
   z-index: 1000;
@@ -376,7 +371,8 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.modal-content {
+.modal-content 
+{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -394,24 +390,28 @@ body {
   opacity: 1;
 }
 
-.modal-image {
+.modal-image 
+{
   width: 200px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-.modal-text {
+.modal-text 
+{
   text-align: left;
   color: #f0f8ff;
 }
 
-.modal-text ul {
+.modal-text ul 
+{
   list-style-type: disc;
   padding-left: 20px;
 }
 
-.close {
+.close 
+{
   position: absolute;
   top: 10px;
   right: 20px;
@@ -420,82 +420,90 @@ body {
   color: #f0f8ff;
 }
 
-html {
+html 
+{
   scroll-behavior: smooth;
   -webkit-scroll-behavior: smooth;
 }
 
-footer {
+footer 
+{
   text-align: center;
   padding: 20px;
   color: #B57EDC;
 }
 
-.language-grid {
+.language-grid 
+{
   display: flex;
   justify-content: space-between;
   padding: 10px;
 }
 
-.language-subcategory {
+.language-subcategory 
+{
   width: 45%;
 }
 
-.language-subcategory h4 {
+.language-subcategory h4 
+{
   color: #CC8899;
   margin-bottom: 10px;
 }
 
-.language-subcategory ul {
+.language-subcategory ul 
+{
   list-style: none;
   padding: 0;
 }
 
-.language-subcategory ul li {
+.language-subcategory ul li 
+{
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.language-subcategory ul li img.icon {
+.language-subcategory ul li img.icon 
+{
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-/* --- Other existing styles --- */
-
-/* New AWS Header Styles */
-#aws-header {
-  margin: 120px auto 40px;  /* Adjust top/bottom spacing as needed */
+#aws-header 
+{
+  margin: 120px auto 40px;
   text-align: center;
   width: 100%;
 }
 
-#aws-header h2 {
+#aws-header h2 
+{
   opacity: 0;
   font-size: 2.5rem;
   color: #fff;
   font-family: 'Source Code Pro', monospace;
   margin: 0;
-  padding: 0 20px;  /* some horizontal padding */
+  padding: 0 20px;
 }
 
 
-#aws-header .aws-logo {
+#aws-header .aws-logo 
+{
   width: 3rem;
   vertical-align: middle;
   margin-right: 1rem;
 }
 
-/* --- Custom Splash Screen Styles --- */
-#custom-splash {
+#custom-splash 
+{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: #000; /* Or a gradient if you prefer */
+  background-color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,59 +511,193 @@ footer {
   z-index: 9999;
 }
 
-.splash-temp, .splash-aws {
+.splash-temp, .splash-aws 
+{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: auto; /* or remove if not needed */
-  margin: 0;   /* ensure no extra margins interfere */
+  width: auto;
+  margin: 0;
 }
 
-.splash-temp h1 {
+.splash-temp h1 
+{
+  letter-spacing: 0.01em;
   margin: 0;
   width: 100%;
   text-align: center;
 }
-/* We removed .splash-permanent from the splash overlay */
-/* Instead, the AWS message now lives in #aws-header */
 
-/* The reveal technique for individual letters */
-.reveal .parent {
+.reveal .parent 
+{
   display: inline-block;
   width: 100%;
   display: inline-block;
   text-align: center;
   overflow: hidden;
 }
-.reveal .child {
+
+.reveal .child 
+{
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;
-  white-space: pre;  /* Preserves spaces between characters */
+  white-space: normal;
 }
 
-/* Optional: Subtle pulse animation (if desired) on the AWS header */
-@keyframes pulse {
+@keyframes pulse 
+{
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
 
-.resume-container {
+.resume-container 
+{
   text-align: center;
-  display: inline-block; /* Keeps container sizing to the image */
+  display: inline-block;
 }
 
-.click-text {
-  color: #B57EDC;            /* your consistent purple */
+.click-text 
+{
+  color: #B57EDC;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 1.2rem;         /* adjust as needed */
-  margin-bottom: 10px;       /* space between text and image */
-  text-decoration: none;     /* remove underline */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
 
-.resume-container a {
+.resume-container a 
+{
   text-decoration: none;
+}
+
+@media (max-width: 768px) 
+{
+  body 
+  {
+    padding: 0 10px;
+  }
+  
+  .intro-container 
+  {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5%;
+  }
+
+  #intro-text,
+  .splash-temp h1 
+  {
+    font-size: 10vw;
+    padding: 0 20px;
+  }
+  
+  #aws-splash-text 
+  {
+    font-size: 2rem;
+    white-space: nowrap;
+    padding: 0 20px;
+  }
+  
+  .contact-links 
+  {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .my-photo 
+  {
+    width: 50vw;
+    margin-top: 20px;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  
+  #projects-section ul 
+  {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skills-grid 
+  {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skills-column 
+  {
+    width: 80%;
+  }
+
+  .about-me-container 
+  {
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    padding: 20px;
+  }
+  
+  .about-me-text 
+  {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 480px) 
+{
+  body 
+  {
+    padding: 0 0.5px;
+  }
+  
+  #intro-text,
+  .splash-temp h1 
+  {
+    font-size: 10vw;
+    padding: 0 10px;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  
+  #aws-splash-text 
+  {
+    font-size: 1.8rem;
+    white-space: normal;
+    padding: 0 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .modal-text, .about-me-text 
+  {
+    padding: 15px;
+    font-size: 1em;
+  }
+  
+  .contact-links 
+  {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.word-container 
+{
+  display: inline-block;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  margin-right: 0.5em;
 }
