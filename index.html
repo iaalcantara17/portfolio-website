@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </head>
   <body>
-    <canvas id="matrix"></canvas>
 
+    <div id="custom-splash">
+      <div class="splash-temp">
+        <h1 class="reveal">I am the NEXT</h1>
+      </div>
+      <div class="splash-aws" style="opacity:0;">
+        <img src="Assets/aws-logo.png" alt="AWS Logo" class="aws-logo-splash">
+        <span id="aws-splash-text"></span>
+      </div>
+    </div>
+    
+    <canvas id="matrix"></canvas>
+  
     <nav class="navbar">
       <ul>
         <li><a href="#home">Home</a></li>
@@ -29,7 +40,9 @@
           <h1 id="intro-text"></h1>
         </div>
         <a href="Assets/Resume_Israel_Alcantara.pdf" download>
-          <img src="Assets/IMG_7333.jpeg" alt="My Photo" class="my-photo" loading="lazy">
+          <div class="resume-container">
+            <div class="click-text">Click on me!</div>
+            <img src="Assets/IMG_7333.jpeg" alt="My Photo" class="my-photo" loading="lazy">
         </a>
       </div>
     </section>
@@ -43,7 +56,7 @@
             Hi, I’m Israel Alcántara, a Computer Science student passionate about coding and problem-solving. I specialize in both front-end and back-end development and have hands-on experience with languages like Python, Java, C/C++, C#, and Bash.
           </p>
           <p>
-            I’ve worked with libraries like Pandas and NumPy, and I’m familiar with cloud services such as Google Cloud Platform (GCP). My workflow is supported by tools like Git, PyCharm, and IntelliJ.
+            I’ve worked with libraries like Pandas and NumPy, and I’m familiar with Google's cloud coding environment, Google Colab. My workflow is supported by tools like Git, PyCharm, and IntelliJ.
           </p>
           <p>
             I’m always excited to learn more and refine my skills. Every project is an opportunity for me to grow and challenge myself, and I’m committed to becoming better with each step. I look forward to connecting with others who share the same passion for technology and creating meaningful projects.
@@ -74,6 +87,7 @@
                 <li><img src="Assets/cpp.png" alt="C/C++" class="icon">C/C++</li>
                 <li><img src="Assets/csharp.png" alt="C#" class="icon">C#</li>
                 <li><img src="Assets/bash.png" alt="Bash" class="icon">Bash</li>
+                <li><img src="Assets/dart.png" alt="Dart" class="icon">Dart</li>
               </ul>
             </div>
           </div>
@@ -85,15 +99,23 @@
             <li><img src="Assets/pandas.png" alt="Pandas" class="icon">Pandas</li>
             <li><img src="Assets/numpy.png" alt="NumPy" class="icon">NumPy</li>
             <li><img src="Assets/matplotlib.png" alt="Matplotlib" class="icon">Matplotlib</li>
+            <li><img src="Assets/scikitlearn.png" alt="Scikit-learn" class="icon">Scikit-learn</li>
+            <li><img src="Assets/plotly.png" alt="Plotly" class="icon">Plotly</li>
+            <li><img src="Assets/dash.png" alt="Dash" class="icon">Dash</li>
+            <li><img src="Assets/seaborn.png" alt="Seaborn" class="icon">Seaborn</li>
           </ul>
         </div>
         <div class="skills-column">
           <h3>Tools</h3>
           <ul>
+            <li><img src="Assets/linux.png" alt="Linux" class="icon">Linux</li>
             <li><img src="Assets/git.png" alt="Git" class="icon">Git</li>
-            <li><img src="Assets/gcp.png" alt="Google Cloud Platform" class="icon">Google Cloud Platform</li>
+            <li><img src="Assets/googlecolab.png" alt="Google Colab" class="icon">Google Colab</li>
             <li><img src="Assets/vscode.png" alt="VS Code" class="icon">VS Code</li>
-            <li><img src="Assets/visualstudio.png" alt="Visual Studio" class="icon">Visual Studio</li>
+            <li><img src="Assets/vim.png" alt="Vim" class="icon">Vim</li>
+            <li><img src="Assets/flutter.png" alt="Flutter" class="icon">Flutter</li>
+            <li><img src="Assets/firebase.png" alt="Firebase" class="icon">Firebase</li>
+            <li><img src="Assets/nodejs.png" alt="Node.js" class="icon">Node.js</li>
           </ul>
         </div>
         <div class="skills-column">
@@ -111,13 +133,17 @@
       <h2>My Projects</h2>
       <ul>
         <li>
-          <img src="Assets/fortran95-logo.jpg" alt="Fortran95 Project" class="project-icon rectangular-icon">
+          <img src="Assets/fortran95-logo.jpg" alt="Fortran95 Project" class="project-icon rectangular-icon" id="fortran-icon">
         </li>
         <li>
           <img src="Assets/rhythmiq-logo.png" alt="RhythmiQ Project" class="project-icon" id="rhythmiq-icon">
         </li>
+        <li>
+          <img src="Assets/data-analysis-logo.png" alt="Data Analysis and Prediction App" class="project-icon" id="data-analysis-icon">
+        </li>
       </ul>
     </section>
+    
 
     <div id="fortran-modal" class="modal">
       <div class="modal-content">
@@ -125,18 +151,15 @@
         <div class="modal-body">
           <img src="Assets/fortran95-logo.jpg" alt="Fortran Project" class="modal-image">
           <div class="modal-text">
-            <h3>Fortran95 Compiler Project</h3>
-            <p>This project combines a lexical analyzer, a recursive-descent parser, and an interpreter for the SFort95 language. The C++ implementation handled state-based transitions, error detection, and run-time checks. The key components include:</p>
+            <h3>Simplified Fortran95 Compiler Project</h3>
             <ul>
-              <li>Lexical analysis to recognize multi-character tokens like identifiers and constants.</li>
-              <li>Parsing and validating expressions using recursive-descent parsing, including operator precedence.</li>
-              <li>Building a symbol table to track variable types and perform type checks during interpretation.</li>
-              <li>Error reporting for common issues such as missing semicolons, undefined variables, and division by zero.</li>
+              <li>This project is a comprehensive SFort95 compiler that integrates lexical analysis, recursive-descent parsing, and interpretation to ensure compliance with Fortran95 standards and robust syntax validation.</li>
+              <li>It employs a state-based lexical analyzer, operator-precedence parsing, and runtime checks to generate token reports and handle errors such as undefined variables and division by zero.</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </div>    
 
     <div id="rhythmiq-modal" class="modal">
       <div class="modal-content">
@@ -145,17 +168,31 @@
           <img src="Assets/rhythmiq-logo.png" alt="RhythmiQ Project" class="modal-image">
           <div class="modal-text">
             <h3>RhythmiQ Music App</h3>
-            <p>RhythmiQ is a dynamic music app that adjusts playlists based on your activity and mood. Key features include:</p>
             <ul>
-              <li>Multi-platform support developed with Flutter, allowing users to discover new music, search artists, and view recent releases within the past 30 days.</li>
-              <li>Spotify API integration providing song snippets, genre tags, and interactive previews for albums and songs, enhancing user engagement.</li>
-              <li>Responsive UI components built with Flutter, ensuring consistent display of song and album details such as duration, release date, and artwork across devices.</li>
-              <li>Backend powered by Node.js and Firebase, enabling efficient data retrieval, user session management, and real-time updates for a smooth, synchronized user experience.</li>
+              <li>This project is a multi-platform music discovery app that allows users to search for artists, view recent releases, and listen to song previews.</li>
+              <li>The application features a responsive user interface and optimized back-end integration with Firebase and Node.js to support real-time updates and a seamless cross-device experience.</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    
+
+    <div id="data-analysis-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="data-analysis-close">&times;</span>
+        <div class="modal-body">
+          <img src="Assets/data-analysis-logo.png" alt="Data Analysis Project" class="modal-image">
+          <div class="modal-text">
+            <h3>Data Analysis and Prediction App</h3>
+            <ul>
+              <li>This project is an interactive web application that enables users to upload CSV data, visualize it, and train machine learning models using a Gradient Boosting Regressor, featuring dynamic charts for real-time insights.</li>
+              <li>It includes automated data preprocessing that manages missing values, scales numerical data, and encodes categories, thereby allowing users to select features and evaluate model predictions in real time.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>    
 
     <section id="contact-section">
       <h2>Contact Me</h2>
@@ -170,20 +207,18 @@
           <img src="Assets/gmail.png" alt="Email" class="icon">Email
         </a>
       </div>
-    </section>
-
+    </section>    
+    <footer>
+      <p>&copy; 2025 Israel Alcántara</p>
+    </footer>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
       AOS.init();
-    </script>    
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
-  <footer>
-    <p>&copy; 2024 Israel Alcántara</p>
-  </footer>
 </html>
-
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>

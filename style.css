@@ -80,14 +80,29 @@ body {
 
 #intro-text {
   opacity: 0;
-  animation: fadeIn 2s forwards;
   font-size: 3vw;
   line-height: 1.5;
   max-width: 90%;
   word-wrap: break-word;
   text-align: left;
   margin: 0 auto;
-  animation: fadeIn 2s forwards;
+  min-height: 3em;
+}
+
+#aws-splash-text {
+  font-size: 3rem;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 4rem;
+  white-space: nowrap;  /* Prevents the text from wrapping to a new line */
+  min-width: 40vw;      /* Optional: adjust if needed */
+  min-height: 3em;       /* Adjust as needed */
+}
+
+.aws-logo-splash {
+  width: 10rem;        /* Adjust as desired for a bigger image */
+  margin-bottom: 20px;  /* Space between the image and the typed text */
 }
 
 @keyframes fadeIn {
@@ -446,4 +461,101 @@ footer {
   width: 24px;
   height: 24px;
   margin-right: 10px;
+}
+
+/* --- Other existing styles --- */
+
+/* New AWS Header Styles */
+#aws-header {
+  margin: 120px auto 40px;  /* Adjust top/bottom spacing as needed */
+  text-align: center;
+  width: 100%;
+}
+
+#aws-header h2 {
+  opacity: 0;
+  font-size: 2.5rem;
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
+  margin: 0;
+  padding: 0 20px;  /* some horizontal padding */
+}
+
+
+#aws-header .aws-logo {
+  width: 3rem;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+/* --- Custom Splash Screen Styles --- */
+#custom-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000; /* Or a gradient if you prefer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.splash-temp, .splash-aws {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto; /* or remove if not needed */
+  margin: 0;   /* ensure no extra margins interfere */
+}
+
+.splash-temp h1 {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+/* We removed .splash-permanent from the splash overlay */
+/* Instead, the AWS message now lives in #aws-header */
+
+/* The reveal technique for individual letters */
+.reveal .parent {
+  display: inline-block;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+}
+.reveal .child {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  white-space: pre;  /* Preserves spaces between characters */
+}
+
+/* Optional: Subtle pulse animation (if desired) on the AWS header */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.resume-container {
+  text-align: center;
+  display: inline-block; /* Keeps container sizing to the image */
+}
+
+.click-text {
+  color: #B57EDC;            /* your consistent purple */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;         /* adjust as needed */
+  margin-bottom: 10px;       /* space between text and image */
+  text-decoration: none;     /* remove underline */
+}
+
+.resume-container a {
+  text-decoration: none;
 }

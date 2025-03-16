@@ -1,60 +1,12 @@
+// NEW TYPEWRITER EFFECT WITH DELETION (for main intro, if still used)
 const phrases = [
   "Hello, my name is Israel Alcántara.",
   "I am a student and a software engineer.",
   "I am passionate about technology and exploring new opportunities."
 ];
-
-let currentPhraseIndex = 0;
-let currentCharIndex = 0;
-const typingSpeed = 100;
-const pauseBetweenLoops = 2000;
+const typingSpeed = 100;       // Base milliseconds per character
+const pauseBetweenLoops = 2000; // Pause at end of phrase
 const element = document.getElementById('intro-text');
-
-function typeFirstPhrase() {
-  const firstPhrase = phrases[0];
-
-  if (currentCharIndex <= firstPhrase.length) {
-    element.textContent = firstPhrase.slice(0, currentCharIndex);
-    currentCharIndex++;
-    setTimeout(typeFirstPhrase, typingSpeed);
-  } else {
-    currentCharIndex = 0;
-    currentPhraseIndex = 1;
-    setTimeout(typeAndReplace, pauseBetweenLoops);
-  }
-}
-
-function typeAndReplace() {
-  const currentPhrase = phrases[currentPhraseIndex];
-  const nextPhrase = phrases[(currentPhraseIndex + 1) % phrases.length];
-  
-  let displayText = "";
-
-  for (let i = 0; i < currentCharIndex; i++) {
-    if (i < nextPhrase.length) {
-      displayText += nextPhrase.charAt(i);
-    }
-  }
-
-  if (currentCharIndex < currentPhrase.length) {
-    displayText += currentPhrase.slice(currentCharIndex);
-  }
-
-  element.textContent = displayText;
-
-  if (currentCharIndex < Math.max(currentPhrase.length, nextPhrase.length)) {
-    currentCharIndex++;
-    setTimeout(typeAndReplace, typingSpeed);
-  } else {
-    currentCharIndex = 0;
-    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-    setTimeout(typeAndReplace, pauseBetweenLoops);
-  }
-}
-
-window.onload = () => {
-  setTimeout(typeFirstPhrase, 1000);
-};
 
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
@@ -72,23 +24,19 @@ function resizeCanvas() {
 function drawMatrixRain() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-
   ctx.fillStyle = '#00FF00';
   ctx.font = fontSize + 'px monospace';
-
   for (let i = 0; i < drops.length; i++) {
     const text = matrixLetters[Math.floor(Math.random() * matrixLetters.length)];
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
     }
-
     drops[i]++;
   }
 }
 
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*~+=?';
 const matrixLetters = letters.split('');
 
 resizeCanvas();
@@ -156,28 +104,183 @@ window.addEventListener('click', (event) => {
   }
 });
 
-(function() {
-  emailjs.init("YOUR_USER_ID");
-})();
-
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-
-  const params = {
-    name: name,
-    email: email,
-    message: message
-  };
-
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
-    .then(function(response) {
-      document.getElementById('status-message').innerHTML = `<div class="alert alert-success">Your message was sent successfully!</div>`;
-      document.getElementById('contact-form').reset();  // Clear the form
-    }, function(error) {
-      document.getElementById('status-message').innerHTML = `<div class="alert alert-danger">There was an error sending your message. Please try again later.</div>`;
+// --- Custom Splash Animation Code ---
+window.addEventListener('load', function() {
+  console.log("Custom splash animation starting...");
+  
+  // Function to split text into spans for the reveal effect
+  function revealText(selector) {
+    document.querySelectorAll(selector).forEach(function(elem) {
+      let originalText = elem.textContent.trim();
+      elem.textContent = '';
+      let parentSpan = document.createElement('span');
+      parentSpan.classList.add('parent');
+      originalText.split('').forEach(function(char) {
+        let childSpan = document.createElement('span');
+        childSpan.classList.add('child');
+        childSpan.textContent = char;
+        parentSpan.appendChild(childSpan);
+      });
+      elem.appendChild(parentSpan);
     });
+  }
+  
+  // Apply the reveal effect to the temporary text
+  revealText('.splash-temp h1');
+  
+  // Create the GSAP timeline for the splash animations
+  const splashTl = gsap.timeline({ delay: 0.5 });
+  
+  // Animate the temporary text in
+  splashTl.to('.splash-temp .child', {
+    duration: 0.8,
+    opacity: 1,
+    y: 0,
+    ease: "power3.out",
+    stagger: 0.05
+  });
+  
+  // Hold the temporary text briefly
+  splashTl.to('.splash-temp', {
+    duration: 1,
+    opacity: 1
+  });
+  
+  // Animate the temporary text out (slide up and fade)
+  splashTl.to('.splash-temp', {
+    duration: 1,
+    y: -50,
+    opacity: 0,
+    ease: "power2.inOut"
+  });
+  
+  // Fade in the AWS splash container
+  splashTl.to('.splash-aws', {
+    duration: 0.5,
+    opacity: 1,
+    onComplete: function() {
+      // Use the irregular typewriter effect to type the AWS text
+      overwriteTransitionIrregular(
+         document.getElementById('aws-splash-text'),
+         "", // starting empty
+         "Software Development Engineer Intern",
+         typingSpeed, // base speed
+         function() {
+           // After typing completes, wait and then fade out the entire splash
+           setTimeout(function(){
+             gsap.to('#custom-splash', {
+               duration: 0.5,
+               opacity: 0,
+               onComplete: function() {
+                 document.getElementById('custom-splash').style.display = 'none';
+                 console.log("Splash screen removed");
+                 // Now start the main intro typewriter effect
+                 startTyping(phrases, element, typingSpeed, pauseBetweenLoops);
+               }
+             });
+           }, 1000);
+         }
+      );
+    }
+  });
+});
+
+// --- Consolidated Overwrite Transition Function ---
+// (Remove the duplicate definitions—keep only one clean version)
+function overwriteTransitionIrregular(element, oldText, newText, baseSpeed, callback) {
+  let currentText = oldText;
+  const commonLength = Math.min(oldText.length, newText.length);
+  let i = 0;
+  
+  function getDelay() {
+    return baseSpeed * (0.5 + Math.random());
+  }
+  
+  function overwritePhase() {
+    if (i < commonLength) {
+      currentText = currentText.substring(0, i) + newText[i] + currentText.substring(i + 1);
+      element.textContent = currentText;
+      i++;
+      setTimeout(overwritePhase, getDelay());
+    } else {
+      if (newText.length > oldText.length) {
+        appendPhase(i);
+      } else if (oldText.length > newText.length) {
+        deletePhase();
+      } else {
+        element.textContent = newText;
+        if (callback) callback();
+      }
+    }
+  }
+  
+  function appendPhase(j) {
+    if (j < newText.length) {
+      currentText += newText[j];
+      element.textContent = currentText;
+      j++;
+      setTimeout(() => appendPhase(j), getDelay());
+    } else {
+      if (callback) callback();
+    }
+  }
+  
+  // Simplified deletion: remove one character from the end until lengths match.
+  function deletePhase() {
+    if (currentText.length > newText.length) {
+      currentText = currentText.substring(0, newText.length) + currentText.substring(newText.length + 1);
+      element.textContent = currentText;
+      setTimeout(deletePhase, getDelay());
+    } else {
+      if (callback) callback();
+    }
+  }
+  
+  overwritePhase();
+}
+
+// --- StartTyping Function for Main Intro ---
+function startTyping(phrases, element, baseSpeed, pause) {
+  element.style.opacity = '1';
+  
+  let index = 0;
+  function next() {
+    const currentPhrase = phrases[index];
+    const prevText = element.textContent || "";
+    overwriteTransitionIrregular(element, prevText, currentPhrase, baseSpeed, function() {
+      setTimeout(() => {
+        index = (index + 1) % phrases.length;
+        next();
+      }, pause);
+    });
+  }
+  next();
+}
+
+const dataAnalysisIcon = document.getElementById('data-analysis-icon');
+const dataAnalysisModal = document.getElementById('data-analysis-modal');
+const dataAnalysisClose = document.getElementById('data-analysis-close');
+
+dataAnalysisIcon.addEventListener('click', () => {
+  dataAnalysisModal.classList.add('show');
+  dataAnalysisModal.classList.remove('hide');
+  dataAnalysisModal.style.display = 'block';
+});
+
+dataAnalysisClose.addEventListener('click', () => {
+  dataAnalysisModal.classList.add('hide');
+  dataAnalysisModal.classList.remove('show');
+  setTimeout(() => {
+    dataAnalysisModal.style.display = 'none';
+  }, 300);
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target === dataAnalysisModal) {
+    dataAnalysisModal.classList.add('hide');
+    dataAnalysisModal.classList.remove('show');
+    setTimeout(() => {
+      dataAnalysisModal.style.display = 'none';
+    }, 300);
+  }
 });
