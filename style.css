@@ -97,7 +97,8 @@ body
   word-wrap: break-word;
   text-align: left;
   margin: 0 auto;
-  min-height: 3em;
+  min-height: 4em;
+  overflow: hidden;
 }
 
 #aws-splash-text 
@@ -189,30 +190,40 @@ body
 
 .skills-grid 
 {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 .skills-column 
 {
   background-color: #1c1c1c;
   padding: 20px;
+  padding-top: 25px;
   border-radius: 20px;
   box-shadow: 0 0 30px 10px rgba(75, 0, 130, 0.7);
-  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .skills-column h3 
 {
   color: #B57EDC;
+  margin-top: 0;
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .skills-column ul 
 {
-  list-style: none;
-  padding: 0;
+  width: fit-content;
+  text-align: left;
+  margin: 10px auto 0 auto;
 }
 
 .skills-column ul li 
@@ -437,12 +448,15 @@ footer
 {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
   padding: 10px;
 }
 
 .language-subcategory 
 {
-  width: 45%;
+  width: 48%;
+  text-align: left;
 }
 
 .language-subcategory h4 
@@ -454,8 +468,17 @@ footer
 .language-subcategory ul 
 {
   list-style: none;
+  width: 100%;
   padding: 0;
+  margin: 0;
 }
+
+.lanugage-subcategory li 
+{
+  width: 100%;
+  box-sizing: border-box;
+}
+
 
 .language-subcategory ul li 
 {
@@ -634,6 +657,7 @@ footer
   .skills-column 
   {
     width: 80%;
+    margin: 0 auto;
   }
 
   .about-me-container 

@@ -14,6 +14,16 @@ let fontSize = 24;
 let columns;
 let drops;
 
+if ('scrollRestoration' in history) 
+{
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', () => 
+{
+  window.scrollTo(0, 0);
+});
+
+
 function resizeCanvas() 
 {
   canvas.width = window.innerWidth;
@@ -123,6 +133,8 @@ window.addEventListener('click', (event) =>
 
 window.addEventListener('load', function() 
 {
+  window.scrollTo(0, 0);
+  document.body.style.overflow = 'hidden';
   console.log("Custom splash animation starting...");
   
   function revealText(selector) 
@@ -209,6 +221,7 @@ window.addEventListener('load', function()
               onComplete: function() 
               {
                 document.getElementById('custom-splash').style.display = 'none';
+                document.body.style.overflow = '';
                 console.log("Splash screen removed");
                 startTyping(phrases, element, typingSpeed, pauseBetweenLoops);
               }
