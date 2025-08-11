@@ -23,7 +23,6 @@ window.addEventListener('beforeunload', () =>
   window.scrollTo(0, 0);
 });
 
-
 function resizeCanvas() 
 {
   canvas.width = window.innerWidth;
@@ -53,87 +52,61 @@ function drawMatrixRain()
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*~+=?';
 const matrixLetters = letters.split('');
 
-resizeCanvas();
-setInterval(drawMatrixRain, 40);
+if (canvas && ctx) {
+  resizeCanvas();
+  setInterval(drawMatrixRain, 40);
 
-let resizeTimeout;
-window.addEventListener('resize', () => 
-{
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(resizeCanvas, 100);
-});
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(resizeCanvas, 100);
+  });
+} else {
+  console.warn('matrix canvas not found; skipping rain setup');
+}
 
 const modal = document.getElementById('fortran-modal');
 const modalClose = document.querySelector('.close');
-const fortranImage = document.querySelector('.rectangular-icon');
+const fortranImage = document.getElementById('fortran-icon');
 
-fortranImage.addEventListener('click', () => 
-{
-  modal.classList.add('show');
-  modal.classList.remove('hide');
-  modal.style.display = 'block';
-});
+if (fortranImage && modal && modalClose) {
+  fortranImage.addEventListener('click', () => {
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+    modal.style.display = 'block';
+  });
 
-modalClose.addEventListener('click', () => 
-{
-  modal.classList.add('hide');
-  modal.classList.remove('show');
-  setTimeout(() => 
-  {
-    modal.style.display = 'none';
-  }, 300);
-});
-
-window.addEventListener('click', (event) => 
-{
-  if (event.target === modal) 
-  {
+  modalClose.addEventListener('click', () => {
     modal.classList.add('hide');
     modal.classList.remove('show');
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       modal.style.display = 'none';
     }, 300);
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.classList.add('hide');
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+  });
+} else {
+  console.warn('Fortran modal elements missing; listeners not attached');
+}
+window.addEventListener('load', function() {
+  // BUGFIX: Ensure page doesn't get stuck if GSAP fails to load
+  if (typeof gsap === 'undefined') {
+    console.warn('GSAP not available; skipping splash animation');
+    var splash = document.getElementById('custom-splash');
+    if (splash) splash.style.display = 'none';
+    document.body.style.overflow = '';
+    try { startTyping(phrases, element, typingSpeed, pauseBetweenLoops); } catch (e) { console.warn('startTyping failed:', e); }
+    return;
   }
-});
-
-const rhythmiqModal = document.getElementById('rhythmiq-modal');
-const rhythmiqClose = document.getElementById('rhythmiq-close');
-const rhythmiqIcon = document.getElementById('rhythmiq-icon');
-
-rhythmiqIcon.addEventListener('click', () => 
-{
-  rhythmiqModal.classList.add('show');
-  rhythmiqModal.classList.remove('hide');
-  rhythmiqModal.style.display = 'block';
-});
-
-rhythmiqClose.addEventListener('click', () => 
-{
-  rhythmiqModal.classList.add('hide');
-  rhythmiqModal.classList.remove('show');
-  setTimeout(() => 
-  {
-    rhythmiqModal.style.display = 'none';
-  }, 300);
-});
-
-window.addEventListener('click', (event) => 
-{
-  if (event.target === rhythmiqModal) 
-  {
-    rhythmiqModal.classList.add('hide');
-    rhythmiqModal.classList.remove('show');
-    setTimeout(() => 
-    {
-      rhythmiqModal.style.display = 'none';
-    }, 300);
-  }
-});
-
-window.addEventListener('load', function() 
-{
-  window.scrollTo(0, 0);
+window.scrollTo(0, 0);
   document.body.style.overflow = 'hidden';
   console.log("Custom splash animation starting...");
   
@@ -327,36 +300,37 @@ function startTyping(phrases, element, baseSpeed, pause)
 const dataAnalysisIcon = document.getElementById('data-analysis-icon');
 const dataAnalysisModal = document.getElementById('data-analysis-modal');
 const dataAnalysisClose = document.getElementById('data-analysis-close');
+const awsExperienceIcon = document.getElementById('aws-experience-icon');
+const awsExperienceModal = document.getElementById('aws-experience-modal');
+const awsExperienceClose = document.getElementById('aws-experience-close');
 
-dataAnalysisIcon.addEventListener('click', () => 
-{
-  dataAnalysisModal.classList.add('show');
-  dataAnalysisModal.classList.remove('hide');
-  dataAnalysisModal.style.display = 'block';
-});
+if (dataAnalysisIcon && dataAnalysisModal && dataAnalysisClose) {
+  dataAnalysisIcon.addEventListener('click', () => {
+    dataAnalysisModal.classList.add('show');
+    dataAnalysisModal.classList.remove('hide');
+    dataAnalysisModal.style.display = 'block';
+  });
 
-dataAnalysisClose.addEventListener('click', () => 
-{
-  dataAnalysisModal.classList.add('hide');
-  dataAnalysisModal.classList.remove('show');
-  setTimeout(() => 
-  {
-    dataAnalysisModal.style.display = 'none';
-  }, 300);
-});
-
-window.addEventListener('click', (event) => 
-{
-  if (event.target === dataAnalysisModal) 
-  {
+  dataAnalysisClose.addEventListener('click', () => {
     dataAnalysisModal.classList.add('hide');
     dataAnalysisModal.classList.remove('show');
-    setTimeout(() => 
-    {
+    setTimeout(() => {
       dataAnalysisModal.style.display = 'none';
     }, 300);
-  }
-});
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === dataAnalysisModal) {
+      dataAnalysisModal.classList.add('hide');
+      dataAnalysisModal.classList.remove('show');
+      setTimeout(() => {
+        dataAnalysisModal.style.display = 'none';
+      }, 300);
+    }
+  });
+} else {
+  console.warn('Data Analysis modal elements missing; listeners not attached');
+}
 
 function closeModal(modal) {
   modal.classList.add('hide');
@@ -372,6 +346,37 @@ window.addEventListener('click', (event) => {
   }
 });
 
-modalClose.addEventListener('click', () => closeModal(modal));
-rhythmiqClose.addEventListener('click', () => closeModal(rhythmiqModal));
-dataAnalysisClose.addEventListener('click', () => closeModal(dataAnalysisModal));
+if (modal && modalClose) { modalClose.addEventListener('click', () => closeModal(modal)); }
+if (dataAnalysisModal && dataAnalysisClose) { dataAnalysisClose.addEventListener('click', () => closeModal(dataAnalysisModal)); }
+
+// AWS Experience modal handlers
+if (awsExperienceIcon && awsExperienceModal && awsExperienceClose) {
+  awsExperienceIcon.addEventListener('click', () => {
+    awsExperienceModal.classList.add('show');
+    awsExperienceModal.classList.remove('hide');
+    awsExperienceModal.style.display = 'block';
+  });
+
+  awsExperienceClose.addEventListener('click', () => {
+    awsExperienceModal.classList.add('hide');
+    awsExperienceModal.classList.remove('show');
+    setTimeout(() => {
+      awsExperienceModal.style.display = 'none';
+    }, 300);
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === awsExperienceModal) {
+      awsExperienceModal.classList.add('hide');
+      awsExperienceModal.classList.remove('show');
+      setTimeout(() => {
+        awsExperienceModal.style.display = 'none';
+      }, 300);
+    }
+  });
+} else {
+  console.warn('AWS Experience modal elements missing; listeners not attached');
+}
+
+if (awsExperienceModal && awsExperienceClose) { awsExperienceClose.addEventListener('click', () => closeModal(awsExperienceModal)); }
+

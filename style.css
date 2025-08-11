@@ -86,6 +86,7 @@ body
   align-items: center;
   justify-content: center;
   width: 45%;
+  margin-top: 25vh;
 }
 
 #intro-text 
@@ -93,12 +94,15 @@ body
   opacity: 0;
   font-size: 3vw;
   line-height: 1.5;
-  max-width: 90%;
-  word-wrap: break-word;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
   text-align: left;
   margin: 0 auto;
-  min-height: 4em;
+  height: 12em;
   overflow: hidden;
+  padding: 10px 30px;
+  box-sizing: border-box;
 }
 
 #aws-splash-text 
@@ -214,23 +218,30 @@ body
 .skills-column h3 
 {
   color: #B57EDC;
-  margin-top: 0;
-  text-align: center;
+  margin-top: 0 0 20px 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: #1c1c1c;
+  z-index: 1;
   margin-bottom: 20px;
 }
 
 .skills-column ul 
 {
-  width: fit-content;
+  width: 90%;
   text-align: left;
   margin: 10px auto 0 auto;
+  padding-left: 0;
 }
 
 .skills-column ul li 
 {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .skills-column ul li img.icon 
@@ -447,30 +458,37 @@ footer
 .language-grid 
 {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  /*justify-content: center;*/
+  /* align-items: center; */
+  gap: 20px;
   width: 100%;
   padding: 10px;
 }
 
 .language-subcategory 
 {
-  width: 48%;
-  text-align: left;
+  width: 100%;
+  /*text-align: left; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .language-subcategory h4 
 {
   color: #CC8899;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .language-subcategory ul 
 {
   list-style: none;
-  width: 100%;
+  width: 80%;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .lanugage-subcategory li 
@@ -484,6 +502,7 @@ footer
 {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -614,7 +633,8 @@ footer
   #intro-text,
   .splash-temp h1 
   {
-    font-size: 10vw;
+    font-size: 6vw;
+    height: 12em;
     padding: 0 20px;
   }
   
@@ -658,7 +678,10 @@ footer
   {
     width: 80%;
     margin: 0 auto;
+    top: 0;
+    position: sticky;
   }
+ 
 
   .about-me-container 
   {
@@ -688,10 +711,11 @@ footer
   .splash-temp h1 
   {
     font-size: 10vw;
-    padding: 0 10px;
+    padding: 10px 20px;
     max-width: 100%;
+    height: 14em;
     white-space: normal;
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
     word-break: normal;
   }
   
@@ -708,6 +732,13 @@ footer
   {
     padding: 15px;
     font-size: 1em;
+    
+  }
+
+  .text-box{
+   
+    width: 30vh;
+    margin-top: 0vh;
   }
   
   .contact-links 

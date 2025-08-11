@@ -29,6 +29,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about-me-section">About</a></li>
         <li><a href="#skills-section">Skills</a></li>
+        <li><a href="#experience-section">Experience</a></li>
         <li><a href="#projects-section">Projects</a></li>
         <li><a href="#contact-section">Contact</a></li>
       </ul>
@@ -53,7 +54,7 @@
         <img src="Assets/me.jpg" alt="My Photo" class="about-photo">
         <div class="about-me-text">
           <p>
-            Hi, I’m Israel Alcántara, a Computer Science student passionate about coding and problem-solving. I specialize in both front-end and back-end development and have hands-on experience with languages like Python, Java, C/C++, C#, and Bash.
+            Hi, I’m Israel Alcántara, a Computer Science student passionate about coding and problem-solving. I specialize in both front-end and back-end development and have hands-on experience with languages like Python, Java, C/C++, and Bash.
           </p>
           <p>
             I’ve worked with libraries like Pandas and NumPy, and I’m familiar with Google's cloud coding environment, Google Colab. My workflow is supported by tools like Git, PyCharm, and IntelliJ.
@@ -70,8 +71,8 @@
       <div class="skills-grid">
         <div class="skills-column">
           <h3>Languages</h3>
-          <div class="lanugage-grid">
-            <div class="lanugage-subcategory">
+          <div class="language-grid">
+            <div class="language-subcategory">
               <h4>Front-End</h4>
               <ul>
                 <li><img src="Assets/html.png" alt="HTML" class="icon">HTML</li>
@@ -79,16 +80,14 @@
                 <li><img src="Assets/css.png" alt="CSS" class="icon">CSS</li>
               </ul>
             </div>
-            <div class="lanugage-subcategory">
+            <div class="language-subcategory">
               <h4>Back-End</h4>
               <ul>
                 <li><img src="Assets/python.png" alt="Python" class="icon">Python</li>
                 <li><img src="Assets/java.png" alt="Java" class="icon">Java</li>
                 <li><img src="Assets/cpp.png" alt="C/C++" class="icon">C/C++</li>
-                <li><img src="Assets/csharp.png" alt="C#" class="icon">C#</li>
                 <li><img src="Assets/bash.png" alt="Bash" class="icon">Bash</li>
-                <li><img src="Assets/dart.png" alt="Dart" class="icon">Dart</li>
-              </ul>
+                </ul>
             </div>
           </div>
         </div>
@@ -113,10 +112,7 @@
             <li><img src="Assets/googlecolab.png" alt="Google Colab" class="icon">Google Colab</li>
             <li><img src="Assets/vscode.png" alt="VS Code" class="icon">VS Code</li>
             <li><img src="Assets/vim.png" alt="Vim" class="icon">Vim</li>
-            <li><img src="Assets/flutter.png" alt="Flutter" class="icon">Flutter</li>
-            <li><img src="Assets/firebase.png" alt="Firebase" class="icon">Firebase</li>
-            <li><img src="Assets/nodejs.png" alt="Node.js" class="icon">Node.js</li>
-          </ul>
+            </ul>
         </div>
         <div class="skills-column">
           <h3>IDEs</h3>
@@ -128,6 +124,16 @@
         </div>
       </div>
     </section>
+    <section id="experience-section" data-aos="fade-up">
+      <h2>Work Experience</h2>
+      <ul>
+        <li>
+          <img src="Assets/awsmodal.jpg" alt="AWS Internship" class="project-icon rectangular-icon" id="aws-experience-icon" loading="lazy">
+        </li>
+      </ul>
+    </section>
+
+    
 
     <section id="projects-section">
       <h2>My Projects</h2>
@@ -135,10 +141,7 @@
         <li>
           <img src="Assets/fortran95-logo.jpg" alt="Fortran95 Project" class="project-icon rectangular-icon" id="fortran-icon">
         </li>
-        <li>
-          <img src="Assets/rhythmiq-logo.png" alt="RhythmiQ Project" class="project-icon" id="rhythmiq-icon">
-        </li>
-        <li>
+<li>
           <img src="Assets/data-analysis-logo.png" alt="Data Analysis and Prediction App" class="project-icon" id="data-analysis-icon">
         </li>
       </ul>
@@ -159,23 +162,8 @@
           </div>
         </div>
       </div>
-    </div>    
-
-    <div id="rhythmiq-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="rhythmiq-close">&times;</span>
-        <div class="modal-body">
-          <img src="Assets/rhythmiq-logo.png" alt="RhythmiQ Project" class="modal-image">
-          <div class="modal-text">
-            <h3>RhythmiQ Music App</h3>
-            <ul>
-              <li>This project is a multi-platform music discovery app that allows users to search for artists, view recent releases, and listen to song previews.</li>
-              <li>The application features a responsive user interface and optimized back-end integration with Firebase and Node.js to support real-time updates and a seamless cross-device experience.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
+</div>
     
 
     <div id="data-analysis-modal" class="modal">
@@ -194,7 +182,27 @@
       </div>
     </div>    
 
-    <section id="contact-section">
+    
+    <div id="aws-experience-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="aws-experience-close">&times;</span>
+        <div class="modal-body">
+          <img src="Assets/awsmodal.jpg" alt="AWS Internship" class="modal-image">
+          <div class="modal-text">
+            <h3>Software Development Engineering Intern — AWS (ADC BlackMirror)</h3>
+            <ul>
+              <li><strong>Shipped</strong> a lossless compression feature in BlackMirror’s metric export path, enabling telemetry from air‑gapped ADC regions to be transferred efficiently into commercial regions.</li>
+              <li><strong>Designed</strong> a consecutive‑duplicate elimination scheme for histogram datapoints that preserves fidelity while shrinking payload size prior to export.</li>
+              <li><strong>Implemented</strong> a matching <em>decompressor</em> on the receiving side so consumers reconstruct the exact original series end‑to‑end.</li>
+              <li><strong>Built</strong> Java components to emit and parse XML‑encoded histogram metrics—min, max, sum, sample count, bins, and counts—serializing in private regions and deserializing into strongly typed Java objects in commercial regions.</li>
+              <li><strong>Instrumented</strong> observability to quantify compression opportunity and realized savings (e.g., datapoints-per-request and % reduction) without requiring changes to upstream producers or downstream consumers.</li>
+              <li><strong>Validated</strong> correctness with round‑trip and edge‑case tests (empty frames, changing bin boundaries), then <strong>deployed</strong> to production to collect real‑world results.</li>
+            </ul>
+</div>
+        </div>
+      </div>
+    </div>
+<section id="contact-section">
       <h2>Contact Me</h2>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/israel-alcantara/" target="_blank" class="contact-item">
