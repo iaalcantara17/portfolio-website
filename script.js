@@ -96,53 +96,6 @@ if (fortranImage && modal && modalClose) {
 } else {
   console.warn('Fortran modal elements missing; listeners not attached');
 }
-window.addEventListener('load', function() {
-  // BUGFIX: Ensure page doesn't get stuck if GSAP fails to load
-  if (typeof gsap === 'undefined') {
-    console.warn('GSAP not available; skipping splash animation');
-    var splash = document.getElementById('custom-splash');
-    if (splash) splash.style.display = 'none';
-    document.body.style.overflow = '';
-    try { startTyping(phrases, element, typingSpeed, pauseBetweenLoops); } catch (e) { console.warn('startTyping failed:', e); }
-    return;
-  }
-window.scrollTo(0, 0);
-  document.body.style.overflow = 'hidden';
-  console.log("Custom splash animation starting...");
-  
-  function revealText(selector) 
-{
-  document.querySelectorAll(selector).forEach(function(elem) 
-  {
-    let originalText = elem.textContent.trim();
-    elem.textContent = '';
-
-    let words = originalText.split(' ');
-
-    words.forEach((word, wIdx) => 
-    {
-      let wordSpan = document.createElement('span');
-      wordSpan.classList.add('word-container');
-      
-      word.split('').forEach(char => 
-      {
-        let childSpan = document.createElement('span');
-        childSpan.classList.add('child');
-        childSpan.textContent = char;
-        wordSpan.appendChild(childSpan);
-      });
-
-      if (wIdx < words.length - 1) 
-      {
-        let spaceSpan = document.createElement('span');
-        spaceSpan.textContent = ' ';
-        wordSpan.appendChild(spaceSpan);
-      }
-
-      elem.appendChild(wordSpan);
-    });
-  });
-}
 
   revealText('.splash-temp h1');
   
