@@ -97,68 +97,6 @@ if (fortranImage && modal && modalClose) {
   console.warn('Fortran modal elements missing; listeners not attached');
 }
 
-  revealText('.splash-temp h1');
-  
-  const splashTl = gsap.timeline({ delay: 0.5 });
-  
-  splashTl.to('.splash-temp .child', 
-  {
-    duration: 0.8,
-    opacity: 1,
-    y: 0,
-    ease: "power3.out",
-    stagger: 0.05
-  });
-  
-  splashTl.to('.splash-temp', 
-  {
-    duration: 1,
-    opacity: 1
-  });
-  
-  splashTl.to('.splash-temp', 
-  {
-    duration: 1,
-    y: -50,
-    opacity: 0,
-    ease: "power2.inOut"
-  });
-  
-  splashTl.to('.splash-aws', 
-  {
-    duration: 0.5,
-    opacity: 1,
-    onComplete: function() 
-    {
-      overwriteTransitionIrregular
-      (
-        document.getElementById('aws-splash-text'),
-        "",
-        "Software Development Engineer Intern",
-        typingSpeed,
-        function() 
-        {
-          setTimeout(function() 
-          {
-            gsap.to('#custom-splash', 
-            {
-              duration: 0.5,
-              opacity: 0,
-              onComplete: function() 
-              {
-                document.getElementById('custom-splash').style.display = 'none';
-                document.body.style.overflow = '';
-                console.log("Splash screen removed");
-                startTyping(phrases, element, typingSpeed, pauseBetweenLoops);
-              }
-            });
-          }, 1000);
-        }
-      );
-    }
-  });
-});
-
 function overwriteTransitionIrregular(element, oldText, newText, baseSpeed, callback) 
 {
   let currentText = oldText;
@@ -333,3 +271,10 @@ if (awsExperienceIcon && awsExperienceModal && awsExperienceClose) {
 
 if (awsExperienceModal && awsExperienceClose) { awsExperienceClose.addEventListener('click', () => closeModal(awsExperienceModal)); }
 
+window.addEventListener('load', () => {
+  if (element) {
+    startTyping(phrases, element, typingSpeed, pauseBetweenLoops);
+  } else {
+    console.warn('intro-text element not found; typing animation skipped');
+  }
+});
